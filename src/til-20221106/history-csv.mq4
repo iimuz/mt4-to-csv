@@ -2,27 +2,30 @@
 
 #include <stdlib.mqh>
 
+// 1件分の取引履歴を管理するためのクラス。
 class OrderHistoryItem {
  private:
-  int _ticket;
-  datetime _openTime;
-  double _openPrice;
-  int _type;
-  double _lots;
-  string _symbol;
-  double _stopLoss;
-  double _takeProfit;
-  datetime _closeTime;
-  double _closePrice;
-  double _commission;
-  datetime _expiration;
-  double _swap;
-  double _profit;
-  string _comment;
-  int _magicNumber;
+  int _ticket;           // チケット価格
+  datetime _openTime;    // 注文時間
+  double _openPrice;     // 注文価格
+  int _type;             // 注文タイプ
+  double _lots;          // ロット数
+  string _symbol;        // 通貨ペアの名称
+  double _stopLoss;      // ストップロス価格
+  double _takeProfit;    // 損益
+  datetime _closeTime;   // 決済時間
+  double _closePrice;    // 決済価格
+  double _commission;    // 手数料
+  datetime _expiration;  // 有効期限
+  double _swap;          // スワップ損益
+  double _profit;        // リミット価格
+  string _comment;       // コメント
+  int _magicNumber;      // 識別番号
 
  public:
   OrderHistoryItem() {}
+
+  // 指定した注文番号の情報を取得して設定する
   OrderHistoryItem(const int orderIndex) {
     const bool isOrderSelect =
         OrderSelect(orderIndex, SELECT_BY_POS, MODE_HISTORY);
@@ -71,6 +74,7 @@ class OrderHistoryItem {
   int magicNumber() const { return _magicNumber; }
 };
 
+// スクリプト実行のエントリポイント。
 void OnStart() {
   const int fp =
       FileOpen("OrderHistory.csv", FILE_CSV | FILE_ANSI | FILE_WRITE, ',');
@@ -86,12 +90,14 @@ void OnStart() {
   Alert("Complete!");
 }
 
+// csvのヘッダ情報を記載する。
 void WriteCSVHeader(const int fp) {
   FileWrite(fp, "ticket", "openTime", "openPrice", "type", "lots", "symbol",
             "stopLoss", "takeProfit", "closeTime", "closePrice", "commission",
             "expiration", "swap", "profit", "comment", "magicNumber");
 }
 
+// csvに1行分の取引履歴情報を記載する。
 void WriteCSVRow(const int fp, const OrderHistoryItem& item) {
   FileWrite(fp, item.ticket(), item.openTime(), item.openPrice(), item.type(),
             item.lots(), item.symbol(), item.stopLoss(), item.takeProfit(),
