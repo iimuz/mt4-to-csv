@@ -80,6 +80,7 @@ void OnStart() {
       FileOpen("OrderHistory.csv", FILE_CSV | FILE_ANSI | FILE_WRITE, ',');
   WriteCSVHeader(fp);
 
+  // MT4の口座履歴に表示されている期間に依存した要素数を取得
   const int TOTAL_ORDER = OrdersHistoryTotal();
   for (int orderIndex = 0; orderIndex < TOTAL_ORDER; ++orderIndex) {
     const OrderHistoryItem ORDER_ITEM(orderIndex);
