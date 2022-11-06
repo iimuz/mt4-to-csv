@@ -1,12 +1,12 @@
-# MT4の取引履歴をcsv保存
+# MT4 の取引履歴を csv 保存
 
-MT4の取引履歴をcsvファイルとしてエクスポートするためのスクリプトです。
+MT4 の取引履歴を csv ファイルとしてエクスポートするためのスクリプトです。
 
 ## 実行方法
 
 下記の手順で実行します。
 
-1. MetaEditorを開く
+1. MetaEditor を開く
 1. スクリプトを選択して名称を設定
 1. `history-csv.mq4` を全てコピー&ペースト
 1. "実データでデバッグの実行と解除" を実行
@@ -14,12 +14,13 @@ MT4の取引履歴をcsvファイルとしてエクスポートするための�
 
 ## 開発環境
 
-VSCodeを利用しています。
-ただし、MQL4スクリプトをC++と認識させてgoogleスタイルのフォーマッターを適用しています。
+VSCode を利用しています。
+ただし、MQL4 スクリプトを C++と認識させて google スタイルのフォーマッターを適用しています。
 また、拡張子として "ms-vscode.cpptools" を利用していますが、フォーマッターとしてのみ利用しています。
 
-実行自体はVSCodeを利用せず、MetaEditorを利用する前提としています。
+実行自体は VSCode を利用せず、MetaEditor を利用する前提としています。
 
 ## 参考資料
 
-- [MT4でEA自作しちゃおー](https://yukifx.web.fc2.com/sub/reference/00_root/cone/ref_root.html): MT4の関数リファレンス。
+- [MT4 で EA 自作しちゃおー](https://yukifx.web.fc2.com/sub/reference/00_root/cone/ref_root.html): MT4 の関数リファレンス。
+- [MT4 の取引履歴をテキストファイル（CSV 形式）に出力するスクリプト（MQL4）](https://lawn-tech.jp/order_history.html): csv ファイル出力する方法について参考にしたコード。途中から、リファレンスを見て書き直しているのでかなり異なる。
